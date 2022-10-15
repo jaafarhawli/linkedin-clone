@@ -107,13 +107,33 @@ const addEducation = async(req, res) => {
     })
 }
 
+const addLisence = async(req, res) => {
+    const { id , title, institution, startyear, endyear } = req.body;
+
+    Person.findById(id, async (err, person) => {
+        if(err)
+        res.status(404).json("user not found");
+        const lisence = {
+            title: title,
+            institution: institution,
+            startyear: startyear,
+            endyear: endyear,
+        };
+        
+        person.lisences.push(lisence);
+        person.save();
+        res.status(200).json("user updated successfully");
+    })
+}
+
 
 
 module.exports = {
     getPerson,
     editProfile,
     addExperience,
-    addEducation
+    addEducation, 
+    addLisence
 }
 
 
