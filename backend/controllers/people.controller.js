@@ -231,6 +231,15 @@ const viewPosts = async(req, res) => {
         total_posts = total_posts.concat(post.posts);        
     });
     res.status(200).json(total_posts);
+}
+
+const viewCompany = async(req, res) => {
+    const {id} = req.params;
+    Company.findById(id, async(err, company) => {
+        if(err)
+        res.status(404).json("company not found");
+        res.status(200).json(company);
+    });
 
 }
 
@@ -249,7 +258,8 @@ module.exports = {
     easyApply,
     addJob,
     followCompany, 
-    viewPosts
+    viewPosts,
+    viewCompany
 }
 
 
