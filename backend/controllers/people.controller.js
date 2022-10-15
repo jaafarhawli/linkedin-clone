@@ -69,11 +69,32 @@ const editProfile = async (req, res) => {
     });
 } 
 
+const addExperience = async(req, res) => {
+    const { id ,type, company, startyear, endyear, location } = req.body;
+
+    Person.findById(id, async (err, person) => {
+        if(err)
+        res.status(404).json("user not found");
+        const experience = {
+            type: type,
+            company: company,
+            startyear: startyear,
+            endyear: endyear,
+            lcoation: location
+        };
+        
+        person.experience.push(experience);
+        person.save();
+        res.status(200).json("user updated successfully");
+    })
+}
+
 
 
 module.exports = {
     getPerson,
     editProfile,
+    addExperience
 }
 
 

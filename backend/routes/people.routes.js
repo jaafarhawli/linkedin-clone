@@ -1,10 +1,11 @@
 const {Router} = require('express');
 const authMiddleware = require('../middlewares/auth.middelware');
 const personMiddleware = require('../middlewares/person.middleware');
-const { getPerson, editProfile } = require('../controllers/people.controller');
+const { getPerson, editProfile, addExperience } = require('../controllers/people.controller');
 const router = Router();
 
 router.get('/:id', authMiddleware, personMiddleware, getPerson);
-router.put('/', editProfile);
+router.put('/', authMiddleware, personMiddleware, editProfile);
+router.post('/experience', authMiddleware, personMiddleware, addExperience);
 
 module.exports = router;

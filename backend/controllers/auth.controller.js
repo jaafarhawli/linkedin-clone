@@ -48,8 +48,6 @@ const personSignup = async (req, res)=>{
         banner_url = '';
         about = '';
         headline = ''; 
-        induistry = '';
-
         await person.save();
 
         const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {

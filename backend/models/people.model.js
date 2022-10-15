@@ -35,8 +35,8 @@ const personSchema = new mongoose.Schema({
             type: String
         },
         company: String,
-        startdate: Date,
-        enddate: Date,
+        startyear: Number,
+        endyear: String,
         location: String,
     }],
     skills: [{
