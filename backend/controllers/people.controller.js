@@ -1,5 +1,6 @@
 const User = require('../models/users.model');
 const Person = require('../models/people.model');
+const Job = require('../models/jobs.model');
 
 const getPerson = async (req, res) => {
     const {id} = req.params;
@@ -169,11 +170,20 @@ const addLanguage = async(req, res) => {
             level: level
         };
         
-        person.languages.push(language);
+        person.projects.push(project);
         person.save();
         res.status(200).json("user updated successfully");
     })
 }
+
+const searchJob = async(req, res) => {
+    const {job} = req.params;
+
+    const jobs = await Job.find({description: {$regex: job, $options: 'i'}});
+    res.status(200).json(jobs);
+}
+
+
 
 
 module.exports = {
@@ -184,8 +194,18 @@ module.exports = {
     addLisence,
     addSkill,
     addProject,
-    addLanguage
+    addLanguage,
+    searchJob, 
 }
 
 
-// User.findById(id).then((user)=>res.send(user));
+// const addJob = async(req, res) => {
+    //     const {title, location, description} = req.body;
+    //     const job = new Job;
+    //     job.title = title;
+    //     job.location = location;
+    //     job.description = description;
+    //     await job.save();
+    
+    //     res.status(200).json("user updated successfully");
+    // }
