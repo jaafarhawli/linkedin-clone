@@ -23,6 +23,13 @@ const personSchema = new mongoose.Schema({
     headline: {
         type: String,
     },
+    industry: {
+        type: String,
+        required: 'industry is required'
+    },
+    about: {
+        type: String
+    },
     experience: [{
         type: {
             type: String
@@ -38,19 +45,22 @@ const personSchema = new mongoose.Schema({
     education: [{
         institution: String,
         startyear: Number,
-        endyear: Number,
+        endyear: String,
     }],
+    selected_education: {
+        type: String
+    },
     lisences: [{
         title: String,
         institution: String,
         startyear: Number,
-        endyear: Number,
+        endyear: String,
     }],
     projects: [{
         title: String,
         institution: String,
         startyear: Number,
-        endyear: Number,
+        endyear: String,
         description: String,
     }],
     languages: [{

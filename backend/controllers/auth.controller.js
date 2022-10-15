@@ -21,7 +21,7 @@ const login = async (req, res)=>{
 }
 
 const personSignup = async (req, res)=>{
-    const {email, password,type,first_name,last_name,country,profile_picture} = req.body;
+    const {email, password,type,first_name,last_name,country,industry, profile_picture, education, eduction_start, education_end} = req.body;
     try{
         const user = new User();
         user.email = email;
@@ -35,9 +35,20 @@ const personSignup = async (req, res)=>{
         person.firstname = first_name;
         person.lastname = last_name;
         person.country = country;
+        person.industry = industry;
+        person.selected_education = education,
+        person.education[0] = {
+            institution: education,
+            startyear: eduction_start,
+            endyear: education_end
+        }
         if(profile_picture)
         person.profile_url = profile_picture;
         else person.profile_url = '';
+        banner_url = '';
+        about = '';
+        headline = ''; 
+        induistry = '';
 
         await person.save();
 

@@ -1,17 +1,79 @@
 const User = require('../models/users.model');
 const Person = require('../models/people.model');
 
-const getPerson = async (req, res)=>{
+const getPerson = async (req, res) => {
     const {id} = req.params;
-    const user = await User.findById(id);
-    let data = await Person.findById(id);
-    res.send({user, data});
-}
+    User.findOne({
+        _id: id
+   }, async (err, user) => {
+    if(err)
+    res.status(404).json("user not found");
+    else {
+        const data = await Person.findById(id);
+        res.status(200).send({user, data});
+    } 
+})}
+
+const editProfile = async (req, res) => {
+    const {id, ...data} = req.body
+    const user = await Person.findById(id);
+    const changes = {};
+
+    if(data.firstname)
+    changes.firstname = data.firstname;
+    else
+    changes.firstname = user.firstname;
+
+    if(data.lastname)
+    changes.lastname = data.lastname;
+    else
+    changes.lastname = user.lastname;
+    
+    if(data.headline)
+    changes.headline = data.headline;
+    else
+    changes.headline = user.headline;
+    
+    if(data.industry)
+    changes.industry = data.industry;
+    else
+    changes.industry = user.industry;
+    
+    if(data.location)
+    changes.location = data.location;
+    else
+    changes.location = user.location;
+    
+    if(data.selected_education)
+    changes.selected_education = data.selected_education;
+    else
+    changes.selected_education = user.selected_education;
+    
+    if(data.about)
+    changes.about = data.about;
+    else
+    changes.about = user.about;
+    
+    Person.findByIdAndUpdate(id,{
+        firstname: changes.firstname,
+        lastname: changes.lastname,
+        headline: changes.headline,
+        industry: changes.industry, 
+        location: changes.location,
+        selected_education: changes.selected_education,
+        about: changes.about
+    }, async (err) => {
+        if(err)
+        res.status(400).json("invalid input");
+        res.status(200).json("user updated successfully");
+    });
+} 
 
 
 
 module.exports = {
     getPerson,
+    editProfile,
 }
 
 
