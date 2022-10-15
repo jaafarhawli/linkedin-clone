@@ -158,6 +158,23 @@ const addProject = async(req, res) => {
     })
 }
 
+const addLanguage = async(req, res) => {
+    const { id , language, level } = req.body;
+
+    Person.findById(id, async (err, person) => {
+        if(err)
+        res.status(404).json("user not found");
+        const project = {
+            language: language,
+            level: level
+        };
+        
+        person.languages.push(language);
+        person.save();
+        res.status(200).json("user updated successfully");
+    })
+}
+
 
 module.exports = {
     getPerson,
@@ -166,7 +183,8 @@ module.exports = {
     addEducation, 
     addLisence,
     addSkill,
-    addProject
+    addProject,
+    addLanguage
 }
 
 
