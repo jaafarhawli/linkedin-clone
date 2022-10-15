@@ -1,6 +1,6 @@
 const User = require('../models/users.model');
 const Person = require('../models/people.model');
-
+const Company = require('../models/companies.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -47,7 +47,44 @@ const personSignup = async (req, res)=>{
     }
 }
 
+const companySignup = async (req, res)=>{
+    const {email, password,type,name, url, website, industry, size, logo, tagline} = req.body;
+    try{
+        const user = new User();
+        user.email = email;
+        user.password = await bcrypt.hash(password, 10);
+        user.type = type;
+
+        await user.save();
+
+        const company = new Company();
+        company.name = name;
+        company.url = url;
+        if(website) {
+            company.website = website;
+        }
+        company.industry = industry;
+        company.size = size;
+        if(logo) {
+            company.logo = logo;
+        }
+        if(tagline) {
+            company.tagline = tagline;
+        }
+
+        await company.save();
+
+        res.json(user, company);
+
+    }catch(err){
+        res.status(400).json({
+            message: err.message
+        })
+    }
+}
+
 module.exports = {
     login,
-    personSignup
+    personSignup,
+    companySignup
 }

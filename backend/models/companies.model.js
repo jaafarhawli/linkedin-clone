@@ -15,9 +15,11 @@ const companySchema = new mongoose.Schema({
     },
     industry: {
         type: String,
+        required: 'industry is required'
     },
     size: {
         type: Number,
+        required: 'size is required'
     },
     logo_url: {
         type: String,
