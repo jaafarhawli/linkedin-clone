@@ -15,8 +15,7 @@ const companySchema = new mongoose.Schema({
     name: {
         type: String,
         required: 'first name is required'
-    },
-    
+    },   
     url: {
         type: String,
         required: 'url is required'
@@ -34,6 +33,9 @@ const companySchema = new mongoose.Schema({
         type: String,
     },
     tagline: {
+        type: String,
+    },
+    overview: {
         type: String,
     },
     posts: [{
