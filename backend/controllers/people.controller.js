@@ -1,6 +1,7 @@
 const User = require('../models/users.model');
 const Person = require('../models/people.model');
 const Job = require('../models/jobs.model');
+const Company = require('../models/companies.model');
 
 const getPerson = async (req, res) => {
     const {id} = req.params;
@@ -206,6 +207,23 @@ const addJob = async(req, res) => {
     res.status(200).json("user updated successfully");
 }
 
+const followCompany = async(req, res) => {
+    const {person_id, company_id} = req.body;
+
+    const company = await Company.findById(company_id);
+    const person = await Person.findById(person_id);
+
+    company.followers_ids.push(person_id);
+    await company.save();
+
+    person.following.push(company_id);
+    await person.save();
+
+    res.status(200).json("user updated successfully");
+}
+
+
+
 
 module.exports = {
     getPerson,
@@ -217,7 +235,9 @@ module.exports = {
     addProject,
     addLanguage,
     searchJob, 
-    easyApply, addJob
+    easyApply,
+    addJob,
+    followCompany
 }
 
 
