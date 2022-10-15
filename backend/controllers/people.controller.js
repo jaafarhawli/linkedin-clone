@@ -243,6 +243,16 @@ const viewCompany = async(req, res) => {
 
 }
 
+const viewJob = async(req, res) => {
+    const {id} = req.params;
+    Job.findById(id, async(err, job) => {
+        if(err)
+        res.status(404).json("job not found");
+        res.status(200).json(job);
+    });
+
+}
+
 
 
 module.exports = {
@@ -259,7 +269,8 @@ module.exports = {
     addJob,
     followCompany, 
     viewPosts,
-    viewCompany
+    viewCompany,
+    viewJob
 }
 
 

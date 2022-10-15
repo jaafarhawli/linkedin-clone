@@ -15,7 +15,10 @@ const jobSchema = new mongoose.Schema({
     },
     applicants_ids: [{
         type: String
-    }]
+    }], 
+    company_id: {
+        type: String
+    }
 })
 
 const Job = mongoose.model('Job', jobSchema);
