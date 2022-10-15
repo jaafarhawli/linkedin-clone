@@ -138,6 +138,25 @@ const addSkill = async(req, res) => {
     })
 }
 
+const addProject = async(req, res) => {
+    const { id , title, institution, startyear, endyear, description } = req.body;
+
+    Person.findById(id, async (err, person) => {
+        if(err)
+        res.status(404).json("user not found");
+        const project = {
+            title: title,
+            institution: institution,
+            startyear: startyear,
+            endyear: endyear,
+            description: description
+        };
+        
+        person.projects.push(project);
+        person.save();
+        res.status(200).json("user updated successfully");
+    })
+}
 
 
 module.exports = {
@@ -146,7 +165,8 @@ module.exports = {
     addExperience,
     addEducation, 
     addLisence,
-    addSkill
+    addSkill,
+    addProject
 }
 
 
