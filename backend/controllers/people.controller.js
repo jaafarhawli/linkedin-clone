@@ -183,7 +183,28 @@ const searchJob = async(req, res) => {
     res.status(200).json(jobs);
 }
 
+const easyApply = async(req, res) => {
+    const {person_id, job_id} = req.body;
 
+    Job.findById(job_id, async (err, job) => {
+        if(err)
+        res.status(404).json("job not found");
+        job.applicants_ids.push(person_id);
+        job.save();
+        res.status(200).json("job updated successfully");
+    });
+}
+
+const addJob = async(req, res) => {
+    const {title, location, description} = req.body;
+    const job = new Job;
+    job.title = title;
+    job.location = location;
+    job.description = description;
+    await job.save();
+
+    res.status(200).json("user updated successfully");
+}
 
 
 module.exports = {
@@ -196,16 +217,7 @@ module.exports = {
     addProject,
     addLanguage,
     searchJob, 
+    easyApply, addJob
 }
 
 
-// const addJob = async(req, res) => {
-    //     const {title, location, description} = req.body;
-    //     const job = new Job;
-    //     job.title = title;
-    //     job.location = location;
-    //     job.description = description;
-    //     await job.save();
-    
-    //     res.status(200).json("user updated successfully");
-    // }

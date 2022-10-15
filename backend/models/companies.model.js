@@ -48,9 +48,6 @@ const companySchema = new mongoose.Schema({
     people_ids: [{
         type: String
     }],
-    applicants_ids: [{
-        type: String
-    }],
     followers_ids: [{
         type: String,
     }]
