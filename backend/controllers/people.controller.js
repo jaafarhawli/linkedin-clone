@@ -253,6 +253,16 @@ const viewJob = async(req, res) => {
 
 }
 
+const viewNotifications = async(req, res) => {
+    const {id} = req.params;
+    Person.findById(id, async(err, person) => {
+        if(err)
+        res.status(404).json("job not found");
+        res.status(200).json(person.notifications);
+    });
+
+}
+
 
 
 module.exports = {
@@ -270,7 +280,8 @@ module.exports = {
     followCompany, 
     viewPosts,
     viewCompany,
-    viewJob
+    viewJob,
+    viewNotifications
 }
 
 
