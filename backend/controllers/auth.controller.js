@@ -41,7 +41,11 @@ const personSignup = async (req, res)=>{
 
         await person.save();
 
-        res.status(200).json({user, person});
+        const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
+            expiresIn: '1h'
+        });
+
+        res.status(200).json({user, person, token});
 
     }catch(err){
         res.status(400).json({
@@ -80,7 +84,11 @@ const companySignup = async (req, res)=>{
 
         await company.save();
 
-        res.status(200).json({user, company});
+        const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
+            expiresIn: '1h'
+        });
+
+        res.status(200).json({user, company,token});
 
     }catch(err){
         res.status(400).json({
