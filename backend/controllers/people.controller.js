@@ -222,6 +222,17 @@ const followCompany = async(req, res) => {
     res.status(200).json("user updated successfully");
 }
 
+const viewPosts = async(req, res) => {
+    const {id} = req.params;
+    const companies = await Person.findById(id).select("-_id following");
+    const posts = await Company.find().where('_id').in(companies.following).select("-_id posts");
+    let total_posts = [];
+    posts.forEach(post => {
+        total_posts = total_posts.concat(post.posts);        
+    });
+    res.status(200).json(total_posts);
+
+}
 
 
 
@@ -237,7 +248,8 @@ module.exports = {
     searchJob, 
     easyApply,
     addJob,
-    followCompany
+    followCompany, 
+    viewPosts
 }
 
 
