@@ -3,8 +3,8 @@ const {login, personSignup, companySignup} = require('../controllers/auth.contro
 const router = Router();
 
 router.post('/login', login);
-router.post('/personSignup', personSignup);
-router.post('/companySignup', companySignup);
+router.post('/signup/person', personSignup);
+router.post('/signup/company', companySignup);
 
 
 module.exports = router;

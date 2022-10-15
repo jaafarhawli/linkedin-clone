@@ -68,6 +68,6 @@ const personSchema = new mongoose.Schema({
     }]
 })
 
-const People = mongoose.model('People', personSchema);
+const Person = mongoose.model('People', personSchema);
 
-module.exports = People;
+module.exports = Person;

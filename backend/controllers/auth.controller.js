@@ -31,14 +31,17 @@ const personSignup = async (req, res)=>{
         await user.save();
 
         const person = new Person();
+        person._id = user._id;
         person.firstname = first_name;
         person.lastname = last_name;
         person.country = country;
+        if(profile_picture)
         person.profile_url = profile_picture;
+        else person.profile_url = '';
 
         await person.save();
 
-        res.json(user, person);
+        res.status(200).json({user, person});
 
     }catch(err){
         res.status(400).json({
@@ -58,23 +61,26 @@ const companySignup = async (req, res)=>{
         await user.save();
 
         const company = new Company();
+        company._id = user._id;
         company.name = name;
         company.url = url;
-        if(website) {
-            company.website = website;
-        }
+        if(website) 
+        company.website = website;
+        else company.website = '';
+
         company.industry = industry;
         company.size = size;
-        if(logo) {
-            company.logo = logo;
-        }
-        if(tagline) {
-            company.tagline = tagline;
-        }
+        if(logo) 
+        company.logo_url = logo;
+        else company.logo_url = '';
+
+        if(tagline) 
+        company.tagline = tagline;
+        else company.tagline = '';
 
         await company.save();
 
-        res.json(user, company);
+        res.status(200).json({user, company});
 
     }catch(err){
         res.status(400).json({
