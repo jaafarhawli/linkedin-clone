@@ -35,7 +35,8 @@ const companySchema = new mongoose.Schema({
             type:String,
             require: 'content is required',
         },
-        picture_url: String
+        picture_url: String,
+        date: Date
     }],
     skills: [{
         type: String,
