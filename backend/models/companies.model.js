@@ -8,7 +8,9 @@ const companySchema = new mongoose.Schema({
     },   
     url: {
         type: String,
-        required: 'url is required'
+        required: 'url is required',
+        unique: true,
+        trim: true
     },
     website: {
         type: String,
@@ -38,13 +40,9 @@ const companySchema = new mongoose.Schema({
         picture_url: String,
         date: Date
     }],
-    skills: [{
-        type: String,
-    }],
     job_ids: [{
         type: String
     }],
-
     people_ids: [{
         type: String
     }],

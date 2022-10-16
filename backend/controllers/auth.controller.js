@@ -65,6 +65,15 @@ const personSignup = async (req, res)=>{
 
 const companySignup = async (req, res)=>{
     const {email, password,type,name, url, website, industry, size, logo, tagline} = req.body;
+    const companies = await Company.find();
+    let total_urls = [];
+    companies.forEach(company => {
+        total_urls = total_urls.concat(company.url);        
+    });
+    if (total_urls.includes(url)) 
+    res.status(400).json("url already exists");
+    res.status(400).json("companies");
+
     try{
         const user = new User();
         user.email = email;
