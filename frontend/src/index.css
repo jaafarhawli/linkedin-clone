@@ -13,3 +13,7 @@ code {
 .flex {
   display: flex;
 }
+
+.column {
+  flex-direction: column;
+}

@@ -25,3 +25,69 @@
 .join-btn {
     background-color: none !important;
 }
+
+.login-banner {
+    width: 700px;
+    float: left;
+    padding-top: 80px;
+}
+
+.login-content {
+    padding-left: 200px;
+}
+
+.login-body {
+    width: 100%;
+}
+
+.banner-container {
+    justify-content: end;
+    padding-right: 10px;
+}
+
+.login-content p {
+    color: #8f5849;
+    font-size: 56px;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+.login-form {
+    width: 400px;
+}
+
+.login-input-password,
+.login-input-email {
+    height: 45px;
+    background-color: white;
+    border: 1px solid rgb(70, 70, 70);
+    font-size: 16px;
+    outline: none;
+    padding-left: 10px;
+    border-radius: 2px;
+    margin-top: 20px;
+}
+
+.login-submit {
+    background-color: #2977C9;
+    color: white;
+    font-size: 22px !important;
+    border-radius: 100px !important;
+    font-weight: 400 !important;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600 !important;
+    color: #2977C9;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.login-agreement {
+    font-size: 14px !important;
+    color: black !important;
+    margin-bottom: 10px !important;
+}
