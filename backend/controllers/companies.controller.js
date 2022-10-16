@@ -128,11 +128,20 @@ const viewFollowers = async(req, res) => {
     });
 }
 
+const viewFollowersNumber = async(req, res) => {
+    const {id} = req.params;
+    Company.findById(id, async (err, company) => {
+        if(err)
+        res.status(404).json("company not found");
+        res.status(200).json(company.followers_ids.length);
+    });
+}
+
 
 module.exports = {
     addJob,
     editProfile,
     viewAppliers,
     addPost, 
-    viewFollowers
+    viewFollowers, viewFollowersNumber
 }

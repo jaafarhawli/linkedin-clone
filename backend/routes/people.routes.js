@@ -5,7 +5,7 @@ const { getPerson, editUser, editProfile, addExperience, addEducation, addLisenc
 const router = Router();
 
 router.get('/person/:id', authMiddleware, getPerson);
-router.put('/user', editUser);
+router.put('/user', authMiddleware, editUser);
 router.put('/', authMiddleware, personMiddleware, editProfile);
 router.post('/experience', authMiddleware, personMiddleware, addExperience);
 router.post('/education', authMiddleware, personMiddleware,addEducation);
