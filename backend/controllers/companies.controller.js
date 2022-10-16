@@ -99,9 +99,30 @@ const viewAppliers = async(req, res) => {
     });
 }
 
+const addPost = async(req, res) => {
+    const { id , ...data} = req.body;
+
+    Company.findById(id, async (err, company) => {
+        if(err)
+        res.status(404).json("company not found");
+        if(!data.picture_url)
+        data.picture_url = '';
+        const post = {
+            content: data.content, 
+            picture_url: data.picture_url,
+            date: data.date,
+        };
+        
+        company.posts.push(post);
+        company.save();
+        res.status(200).json("company updated successfully");
+    })
+}
+
 
 module.exports = {
     addJob,
     editProfile,
-    viewAppliers
+    viewAppliers,
+    addPost
 }
