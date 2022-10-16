@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css';
 import {BsLinkedin} from "react-icons/bs";
 import Button from '../../components/button/Button';
-import banner from './banner.png';
+import banner from '../../images/banner.png';
 import { useState, useEffect } from 'react';
 
 const Login = () => {
@@ -10,7 +10,39 @@ const Login = () => {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
-  
+//   const handleSubmit = async () => {
+//     const form = {
+//         email: username,
+//         password: password
+//     };
+//     try {
+//         const data = await axios.post('/api/v1/login', form);
+//         const token = data.data.authorisation.token;
+//         if(token) {
+//             localStorage.setItem('token', token);
+//             localStorage.setItem('id', data.data.user._id);
+//             localStorage.setItem('name', data.data.user.name);
+//             localStorage.setItem('email', data.data.user.email);
+//             localStorage.setItem('type', data.data.user.type);
+//             setIsAuthenticated(true);
+//             if(data.data.user.type === 'admin') {
+//                 setUserType('admin');
+//             }
+//             else if(data.data.user.type === 'instructor') {
+//                 setUserType('instructor');
+//             }
+//             else {
+//                 setUserType('student');
+//             }
+//         }
+//         // if(localStorage.type === 'admin') {
+//         //     navigate("/dashboard");
+//         // }
+//         // window.location.reload(false);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
   return (
     <div>
