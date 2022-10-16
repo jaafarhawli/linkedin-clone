@@ -260,7 +260,11 @@ const viewNotifications = async(req, res) => {
         res.status(404).json("job not found");
         res.status(200).json(person.notifications);
     });
+}
 
+const viewJobs = async(req, res) => {
+    const jobs = await Job.find();
+    res.status(200).json(jobs);
 }
 
 
@@ -281,7 +285,8 @@ module.exports = {
     viewPosts,
     viewCompany,
     viewJob,
-    viewNotifications
+    viewNotifications,
+    viewJobs
 }
 
 
