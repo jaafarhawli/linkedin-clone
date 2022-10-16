@@ -10,6 +10,9 @@ app.use('/auth', authRoutes);
 const peopleRoutes = require('./routes/people.routes');
 app.use('/people', peopleRoutes);
 
+const companiesRoutes = require('./routes/companies.routes');
+app.use('/companies', companiesRoutes);
+
 app.listen(process.env.PORT, (err)=>{
     if(err) throw err;
     console.log(`server running on port ${process.env.PORT}`);

@@ -196,19 +196,6 @@ const easyApply = async(req, res) => {
     });
 }
 
-const addJob = async(req, res) => {
-    const {title, location, description} = req.body;
-    const today = new Date().toLocaleString();
-    const job = new Job;
-    job.title = title;
-    job.location = location;
-    job.description = description;
-    job.date = today;
-    await job.save();
-
-    res.status(200).json("user updated successfully");
-}
-
 const followCompany = async(req, res) => {
     const {person_id, company_id} = req.body;
 
@@ -291,7 +278,6 @@ module.exports = {
     addLanguage,
     searchJob, 
     easyApply,
-    addJob,
     followCompany, 
     viewPosts,
     viewCompany,

@@ -22,7 +22,7 @@ router.get('/notifications/:id', viewNotifications);
 router.get('/jobs', viewJobs);
 router.get('/company/jobs/:id', viewCompanyJobs);
 
-router.post('/add', addJob);
+
 
 
 
