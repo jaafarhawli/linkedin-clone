@@ -16,6 +16,27 @@ const getPerson = async (req, res) => {
     } 
 })}
 
+const editUser = async(req,res) => {
+    const {id, ...data} = req.body;
+    const user = await User.findById(id);
+    if(data.email) {
+        const exists = await User.find({email:data.email});
+        if(exists[0])
+        res.status(400).json("invalid input");
+        user.email = data.email;
+        if(data.password) {
+            user.password = data.password;
+        }
+    }
+    else {
+        if(data.password) {
+            user.password = data.password;
+        }
+    }
+    user.save();
+    res.status(200).json("user updated successfully");
+}
+
 const editProfile = async (req, res) => {
     const {id, ...data} = req.body
     const user = await Person.findById(id);
@@ -269,6 +290,7 @@ const viewCompanyJobs = async(req, res) => {
 
 module.exports = {
     getPerson,
+    editUser,
     editProfile,
     addExperience,
     addEducation, 
