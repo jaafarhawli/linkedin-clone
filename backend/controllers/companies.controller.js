@@ -11,6 +11,7 @@ const addJob = async(req, res) => {
     job.location = location;
     job.description = description;
     job.date = today;
+    job.company_id = id;
     await job.save();
 
     Company.findById(id, async (err, company) => {
@@ -85,8 +86,22 @@ const editProfile = async(req, res) => {
     });
 }
 
+const viewAppliers = async(req, res) => {
+    const {id} = req.body;
+    Job.find({company_id: id}, async (err, jobs) => {
+        if(err)
+        res.status(404).json("company not found");
+        let applicants = [];
+        jobs.forEach(job => {
+            applicants = applicants.concat(job.applicants_ids)
+        })
+        res.status(200).json(applicants);
+    });
+}
+
 
 module.exports = {
     addJob,
-    editProfile
+    editProfile,
+    viewAppliers
 }
