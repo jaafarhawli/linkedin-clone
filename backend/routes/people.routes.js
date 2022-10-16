@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const authMiddleware = require('../middlewares/auth.middelware');
 const personMiddleware = require('../middlewares/person.middleware');
-const { getPerson, editProfile, addExperience, addEducation, addLisence, addSkill, addProject, addLanguage, searchJob, easyApply, addJob, followCompany, viewPosts, viewCompany, viewJob, viewNotifications, viewJobs} = require('../controllers/people.controller');
+const { getPerson, editProfile, addExperience, addEducation, addLisence, addSkill, addProject, addLanguage, searchJob, easyApply, addJob, followCompany, viewPosts, viewCompany, viewJob, viewNotifications, viewJobs, viewCompanyJobs} = require('../controllers/people.controller');
 const router = Router();
 
 router.get('/person/:id', authMiddleware, personMiddleware, getPerson);
@@ -20,6 +20,7 @@ router.get('/company/:id', authMiddleware, personMiddleware, viewCompany);
 router.get('/job/:id', viewJob);
 router.get('/notifications/:id', viewNotifications);
 router.get('/jobs', viewJobs);
+router.get('/company/jobs/:id', viewCompanyJobs);
 
 router.post('/add', addJob);
 

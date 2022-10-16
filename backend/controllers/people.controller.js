@@ -198,10 +198,12 @@ const easyApply = async(req, res) => {
 
 const addJob = async(req, res) => {
     const {title, location, description} = req.body;
+    const today = new Date().toLocaleString();
     const job = new Job;
     job.title = title;
     job.location = location;
     job.description = description;
+    job.date = today;
     await job.save();
 
     res.status(200).json("user updated successfully");
@@ -263,8 +265,17 @@ const viewNotifications = async(req, res) => {
 }
 
 const viewJobs = async(req, res) => {
-    const jobs = await Job.find();
+    const jobs = await Job.find().sort([['date', -1]]);
     res.status(200).json(jobs);
+}
+
+const viewCompanyJobs = async(req, res) => {
+    const {id} = req.params;
+    Company.findById(id, (err, company) => {
+        if(err) 
+        res.status(404).json("company not found");
+        res.status(200).json(company.job_ids);
+    })
 }
 
 
@@ -286,7 +297,8 @@ module.exports = {
     viewCompany,
     viewJob,
     viewNotifications,
-    viewJobs
+    viewJobs,
+    viewCompanyJobs
 }
 
 

@@ -18,6 +18,9 @@ const jobSchema = new mongoose.Schema({
     }], 
     company_id: {
         type: String
+    },
+    date: {
+        type: Date
     }
 })
 
