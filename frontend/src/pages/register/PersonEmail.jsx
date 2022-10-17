@@ -2,8 +2,11 @@ import React from 'react';
 import './register.css';
 import { useState } from 'react';
 import axios from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 const PersonEmail = () => {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -20,9 +23,15 @@ const PersonEmail = () => {
             setError("Invalid Email");
             return;
         }
-
+        if(password.length<8) {
+            setValid(false);
+            setError("Invalid Password");
+            return;
+        }
+        
         try {
-            const user = await axios.get(`people/check/${email}`);
+            await axios.get(`people/check/${email}`);
+            navigate('name');
 
         } catch (error) {
             setValid(false);

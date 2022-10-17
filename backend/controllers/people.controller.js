@@ -315,8 +315,8 @@ const checkEmail = async(req, res) => {
     if(err)
     res.status(404).json("user not found");
     if(user.length>0)
-    res.status(200).json("user found");
-    else res.status(404).json("user not found");
+    res.status(404).json("user found");
+    else res.status(200).json("user not found");
 })}
 
 
