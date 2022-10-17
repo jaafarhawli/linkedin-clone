@@ -21,28 +21,56 @@ const Login = () => {
         const data = await axios.post('auth/login', form);
         const token = data.data;
         const decoded = jwt_decode(token);
-        console.log(decoded);
-        // const token = data.data.authorisation.token;
-        // if(token) {
-        //     localStorage.setItem('token', token);
-        //     localStorage.setItem('id', data.data.user._id);
-        //     localStorage.setItem('name', data.data.user.name);
-        //     localStorage.setItem('email', data.data.user.email);
-        //     localStorage.setItem('type', data.data.user.type);
-        //     setIsAuthenticated(true);
-        //     if(data.data.user.type === 'admin') {
-        //         setUserType('admin');
-        //     }
-        //     else if(data.data.user.type === 'instructor') {
-        //         setUserType('instructor');
-        //     }
-        //     else {
-        //         setUserType('student');
-        //     }
-        // }
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', decoded.email);
+        localStorage.setItem('type', decoded.userType);
+        if(decoded.userType === 1) {
+        try {
+          const user = await axios.get(`people/person/id/${decoded.email}`, {
+            headers: {
+              Authorization: `bearer ${localStorage.token}`
+            }
+          });
+          storeData(user.data);
+        } catch (error) {
+          console.log(error);
+        }}
+        else {
+          try {
+            const user = await axios.get(`companies/id/${decoded.email}`, {
+              headers: {
+                Authorization: `bearer ${localStorage.token}`
+              }
+            });
+            storeCompanyData(user.data);
+          } catch (error) {
+            console.log(error);
+        }}
     } catch (error) {
         console.log(error);
     }
+  }
+
+  const storeData = (data) => {
+    localStorage.setItem("id", data._id);
+    localStorage.setItem("firstname", data.firstname);
+    localStorage.setItem("lastname", data.lastname);
+    localStorage.setItem("industry", data.industry);
+    localStorage.setItem("country", data.country);
+    localStorage.setItem("selected_education", data.selected_education);
+    localStorage.setItem("profile_url", data.profile_url);
+    localStorage.setItem("banner_url", data.banner_url);
+  }
+  
+  const storeCompanyData = (data) => {
+    localStorage.setItem("id", data._id);
+    localStorage.setItem("name", data.name);
+    localStorage.setItem("logo_url", data.logo_url);
+    localStorage.setItem("industry", data.industry);
+    localStorage.setItem("size", data.size);
+    localStorage.setItem("tagline", data.tagline);
+    localStorage.setItem("url", data.url);
+    localStorage.setItem("website", data.website);
   }
 
   return (

@@ -3,16 +3,37 @@ const Person = require('../models/people.model');
 const Job = require('../models/jobs.model');
 const Company = require('../models/companies.model');
 
+
+const getId = async (req, res) => {
+    const {email} = req.params;
+    User.findOne({
+        email: email
+   }, async (err, user) => {
+    if(err)
+    res.status(404).json("user not found");
+    else {
+        Person.findOne({
+            _id: user._id
+       }, async (err, person) => {
+            if(err)
+            res.status(404).json("user not found");
+            else {
+                res.status(200).json(person);
+            } 
+        })
+    } 
+})}
+
+
 const getPerson = async (req, res) => {
     const {id} = req.params;
-    User.findOne({
+    Person.findOne({
         _id: id
    }, async (err, user) => {
     if(err)
     res.status(404).json("user not found");
     else {
-        const data = await Person.findById(id);
-        res.status(200).send({user, data});
+        res.status(200).json(user);
     } 
 })}
 
@@ -289,6 +310,7 @@ const viewCompanyJobs = async(req, res) => {
 
 
 module.exports = {
+    getId,
     getPerson,
     editUser,
     editProfile,

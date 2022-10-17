@@ -1,5 +1,27 @@
 const Job = require('../models/jobs.model');
 const Company = require('../models/companies.model');
+const User = require('../models/users.model');
+
+const getCompanyData = async (req, res) => {
+    const {email} = req.params;
+    User.findOne({
+        email: email
+   }, async (err, user) => {
+    if(err)
+    res.status(404).json("user not found");
+    else {
+        Company.findOne({
+            _id: user._id
+       }, async (err, company) => {
+            if(err)
+            res.status(404).json("user not found");
+            else {
+                res.status(200).json(company);
+            } 
+        })
+    } 
+})}
+
 
 const addJob = async(req, res) => {
     const { id, title, location, description} = req.body;
@@ -137,6 +159,7 @@ const viewFollowersNumber = async(req, res) => {
 
 
 module.exports = {
+    getCompanyData,
     addJob,
     editProfile,
     viewAppliers,

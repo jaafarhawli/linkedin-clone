@@ -10,8 +10,8 @@ const login = async (req, res)=>{
     const user = await User.findOne({email}).select("+password");
 
     if(!user) return res.status(404).json({message: "Invalid Credentials"});
-
-    const isMatch = bcrypt.compare(password, user.password);
+    
+    const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch) return res.status(404).json({message: "Invalid Credentials"});
 
     const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
@@ -45,9 +45,9 @@ const personSignup = async (req, res)=>{
         if(profile_picture)
         person.profile_url = profile_picture;
         else person.profile_url = '';
-        banner_url = '';
-        about = '';
-        headline = ''; 
+        person.banner_url = '';
+        person.about = '';
+        person.headline = ''; 
         await person.save();
 
         const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
