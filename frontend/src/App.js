@@ -28,7 +28,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Navigate to={path} />} />
 				<Route path='/login' element={<Login onLogin={getPath} />} />
-				<Route path='/register/person' element={<Person />} />
+				<Route path='/register/person/*' element={<Person />} />
 			</Routes>
     </BrowserRouter>
   );
