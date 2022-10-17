@@ -11,13 +11,13 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({onLogin}) => {
 
   const navigate = useNavigate();
-  const [username, setUserName] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState(false);
 
   const handleSubmit = async () => {
     const form = {
-        email: username,
+        email: email,
         password: password
     };
     try {
@@ -95,7 +95,7 @@ const Login = ({onLogin}) => {
           <p>Join the biggest<br />professional community</p>
             <form className='login-form flex column'>
               <h1 className={error? 'error-message' : 'error-message display'}>Invalid Credentials</h1>
-              <input type="email" className='login-input-email' placeholder='Email' onChange={e => setUserName(e.target.value)} />
+              <input type="email" className='login-input-email' placeholder='Email' onChange={e => setEmail(e.target.value)} />
               <input type="password" className='login-input-password' placeholder='Password (8+ characters)' onChange={e => setPassword(e.target.value)} />
               <p className='login-agreement'>By clicking Agree & Join, you agree to the LinkedIn <a href="https://www.linkedin.com/legal/user-agreement?trk=homepage-basic_intl-segments-join_join-form-user-agreement">User Agreement</a>, <a href="https://www.linkedin.com/legal/privacy-policy?trk=homepage-basic_intl-segments-join_join-form-privacy-policy">Privacy Policy</a>, and <a href="https://www.linkedin.com/legal/cookie-policy?trk=homepage-basic_intl-segments-join_join-form-cookie-policy">Cookie Policy</a>.</p>
               <button type="button" className='button login-submit' onClick={handleSubmit}>Agree & Join</button>

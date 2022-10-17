@@ -2,6 +2,7 @@ import React from 'react';
 import './register.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from '../../api/axios';
 
 const PersonIndustry = () => {
 
@@ -17,7 +18,26 @@ const PersonIndustry = () => {
         localStorage.setItem('education', education);
         localStorage.setItem('startyear', startyear);
         localStorage.setItem('endyear', endyear);
-        navigate('/person');
+        const form = {
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password'),
+            first_name: localStorage.getItem('firstname'),
+            last_name: localStorage.getItem('lastname'),
+            country: localStorage.getItem('country'),
+            industry: localStorage.getItem('industry'),
+            education: localStorage.getItem('education'),
+            education_start: localStorage.getItem('startyear'),
+            education_end: localStorage.getItem('endyear'),
+        };
+        try {
+            const user = await axios.post('auth/signup/person', form);
+            localStorage.setItem('id', user.data.user._id);
+            localStorage.setItem('token', user.data.token);
+            localStorage.setItem('type', user.data.user.type);
+            navigate('/person');
+          } catch (error) {
+            console.log(error);
+          }    
     }
 
     const generateDates = () => {
