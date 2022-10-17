@@ -75,3 +75,9 @@
 .help {
     text-align: center;
 }
+
+.email-error {
+    font-size: 13px;
+    color: red;
+    margin: 0 !important;
+}
