@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import PersonEmail from './PersonEmail';
 import PersonName from './PersonName';
 import PersonLocation from './PersonLocation';
+import PersonIndustry from './PersonIndustry';
 
 
 const Person = () => {
@@ -21,6 +22,7 @@ const Person = () => {
                 <Route path='/' element={<PersonEmail />} />
                 <Route path='/name' element={<PersonName />} />
                 <Route path='/name/location' element={<PersonLocation />} />
+                <Route path='/name/location/industry' element={<PersonIndustry />} />
           </Routes>
         </div>
     );
