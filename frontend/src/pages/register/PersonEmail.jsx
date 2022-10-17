@@ -31,6 +31,8 @@ const PersonEmail = () => {
         
         try {
             await axios.get(`people/check/${email}`);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
             navigate('name');
 
         } catch (error) {

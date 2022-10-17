@@ -3,6 +3,7 @@ import Logo from '../../components/logo/Logo';
 import './register.css';
 import { Route, Routes } from 'react-router-dom';
 import PersonEmail from './PersonEmail';
+import PersonName from './PersonName';
 
 
 const Person = () => {
@@ -17,6 +18,7 @@ const Person = () => {
           </div>
           <Routes>
                 <Route path='/' element={<PersonEmail />} />
+                <Route path='/name' element={<PersonName />} />
           </Routes>
         </div>
     );
