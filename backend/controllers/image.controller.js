@@ -27,7 +27,7 @@ const uploadBanner = (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
     Person.findById(id, async (err, user) => {
         if(err)
-        res.status(404).json("company not found");
+        res.status(404).json("user not found");
         user.banner_url = url + `/public/${id}/banner` + req.file.filename;
         user.save().then(result => {
         res.status(201).json({
@@ -42,10 +42,31 @@ const uploadBanner = (req, res, next) => {
     })
     })
 }
+const uploadLogo = (req, res, next) => {
+    const {id} = req.body;
+    const url = req.protocol + '://' + req.get('host')
+    Company.findById(id, async (err, user) => {
+        if(err)
+        res.status(404).json("company not found");
+        user.logo_url = url + `/public/${id}` + req.file.filename;
+        user.save().then(result => {
+        res.status(201).json({
+            message: "logo updated successfully!",    
+            logo_url: result.profileImg
+        })
+    }).catch(err => {
+        console.log(err),
+            res.status(500).json({
+                error: err
+            });
+    })
+    })
+}
 
 
 
 module.exports = {
     uploadImage,
-    uploadBanner
+    uploadBanner, 
+    uploadLogo
 }
