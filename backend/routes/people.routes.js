@@ -2,8 +2,9 @@ const {Router} = require('express');
 const authMiddleware = require('../middlewares/auth.middelware');
 const personMiddleware = require('../middlewares/person.middleware');
 const { getId ,getPerson, editUser, editProfile, addExperience, addEducation, addLisence, addSkill, addProject, addLanguage, searchJob, easyApply, followCompany, viewPosts, viewCompany, viewJob, viewNotifications, viewJobs, viewCompanyJobs, checkEmail} = require('../controllers/people.controller');
-const {uploadImage} = require('../controllers/image.controller');
+const {uploadImage, uploadBanner} = require('../controllers/image.controller');
 const imageMiddleware = require('../middlewares/image.middleware');
+const bannerMiddleware = require('../middlewares/banner.middleware');
 const router = Router();
 
 
@@ -28,6 +29,7 @@ router.get('/jobs', authMiddleware, personMiddleware, viewJobs);
 router.get('/company/jobs/:id', authMiddleware, viewCompanyJobs);
 router.get('/check/:email', checkEmail);
 router.post('/profile', imageMiddleware.single('profileImg'), uploadImage);
+router.post('/banner', bannerMiddleware.single('profileImg'), uploadBanner);
 
 
 module.exports = router;

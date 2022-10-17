@@ -1,4 +1,5 @@
 const Person = require('../models/people.model');
+const Company = require('../models/companies.model');
 
 const uploadImage = (req, res, next) => {
     const {id} = req.body;
@@ -6,7 +7,7 @@ const uploadImage = (req, res, next) => {
     Person.findById(id, async (err, user) => {
         if(err)
         res.status(404).json("user not found");
-        user.profile_url = url + '/public/' + req.file.filename;
+        user.profile_url = url + `/public/${id}/profile` + req.file.filename;
         user.save().then(result => {
         res.status(201).json({
             message: "Profile updated successfully!",    
@@ -26,8 +27,8 @@ const uploadBanner = (req, res, next) => {
     const url = req.protocol + '://' + req.get('host')
     Person.findById(id, async (err, user) => {
         if(err)
-        res.status(404).json("user not found");
-        user.banner_url = url + '/public/' + req.file.filename;
+        res.status(404).json("company not found");
+        user.banner_url = url + `/public/${id}/banner` + req.file.filename;
         user.save().then(result => {
         res.status(201).json({
             message: "banner updated successfully!",    
