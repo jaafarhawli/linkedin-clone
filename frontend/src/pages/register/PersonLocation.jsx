@@ -21,7 +21,7 @@ const PersonLocation = () => {
     const handleSubmit = async() => {
         console.log(location.label);
         localStorage.setItem('location', location.label);
-        navigate('industry');
+        navigate('picture');
     }
     
 
