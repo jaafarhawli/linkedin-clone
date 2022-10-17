@@ -23,7 +23,7 @@ const login = async (req, res)=>{
 }
 
 const personSignup = async (req, res)=>{
-    const {email, password,first_name,last_name,country,industry, profile_picture, education, eduction_start, education_end} = req.body;
+    const {email, password,first_name,last_name,country,industry,  education, eduction_start, education_end} = req.body;
 
     if(password.length < 8)
     return res.status(400).json("Invalid input");
@@ -52,9 +52,7 @@ const personSignup = async (req, res)=>{
             startyear: eduction_start,
             endyear: education_end
         }
-        if(profile_picture)
-        person.profile_url = profile_picture;
-        else person.profile_url = '';
+        person.profile_url = '';
         person.banner_url = '';
         person.about = '';
         person.headline = ''; 
@@ -74,7 +72,7 @@ const personSignup = async (req, res)=>{
 }
 
 const companySignup = async (req, res)=>{
-    const {email, password,name, url, website, industry, size, logo, tagline} = req.body;
+    const {email, password,name, url, website, industry, size, tagline} = req.body;
     const companies = await Company.find();
     let total_urls = [];
     companies.forEach(company => {
@@ -110,8 +108,7 @@ const companySignup = async (req, res)=>{
         company.industry = industry;
         company.size = size;
         if(logo) 
-        company.logo_url = logo;
-        else company.logo_url = '';
+        company.logo_url = '';
 
         if(tagline) 
         company.tagline = tagline;
