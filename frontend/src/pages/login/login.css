@@ -4,20 +4,6 @@
     padding: 0 200px;
 }
 
-.nav-logo {
-    font-size: 33px;
-    color: #0a66c2;
-}
-
-.logo h1 {
-    color: #0a66c2;
-}
-
-.logo {
-    align-items: center;
-    gap: 5px;
-}
-
 .nav-buttons {
     gap: 5px;
 }

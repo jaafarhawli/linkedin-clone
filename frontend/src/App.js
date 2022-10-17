@@ -15,6 +15,9 @@ function App() {
 			case '2':
 				setPath('/company');
 				break;
+			default:
+				setPath('/login');
+				break;
 		}
 	}
 

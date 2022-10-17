@@ -1,9 +1,9 @@
 import React from 'react';
 import './login.css';
-import {BsLinkedin} from "react-icons/bs";
+import Logo from '../../components/logo/Logo';
 import Button from '../../components/button/Button';
 import banner from '../../images/banner.png';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from '../../api/axios';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
@@ -84,10 +84,7 @@ const Login = ({onLogin}) => {
   return (
     <div>
       <div className='navigation flex'>
-        <div className='logo flex'>
-          <h1>Linked</h1>
-          <BsLinkedin className='nav-logo' />
-        </div>
+        <Logo />
         <div className='nav-buttons flex'>
           <Button buttonText={"Join now"} classname={"join-btn"} />
           <Button buttonText={"Sign in"} classname={"signin-btn"} />
