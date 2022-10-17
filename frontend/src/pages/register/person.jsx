@@ -4,6 +4,7 @@ import './register.css';
 import { Route, Routes } from 'react-router-dom';
 import PersonEmail from './PersonEmail';
 import PersonName from './PersonName';
+import PersonLocation from './PersonLocation';
 
 
 const Person = () => {
@@ -19,6 +20,7 @@ const Person = () => {
           <Routes>
                 <Route path='/' element={<PersonEmail />} />
                 <Route path='/name' element={<PersonName />} />
+                <Route path='/name/location' element={<PersonLocation />} />
           </Routes>
         </div>
     );
