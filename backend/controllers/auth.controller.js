@@ -3,6 +3,8 @@ const Person = require('../models/people.model');
 const Company = require('../models/companies.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+var validator = require("email-validator");
+
 
 const login = async (req, res)=>{
     const {email, password} = req.body;
@@ -22,6 +24,14 @@ const login = async (req, res)=>{
 
 const personSignup = async (req, res)=>{
     const {email, password,type,first_name,last_name,country,industry, profile_picture, education, eduction_start, education_end} = req.body;
+
+    if(password.length < 8)
+    return res.status(400).json("Invalid input");
+     
+    const validate = validator.validate(email); 
+    if(!validate)
+    return res.status(400).json("Invalid input");
+    
     try{
         const user = new User();
         user.email = email;
@@ -73,6 +83,13 @@ const companySignup = async (req, res)=>{
     if (total_urls.includes(url)) 
     res.status(400).json("url already exists");
     res.status(400).json("companies");
+
+    if(password.length < 8)
+    return res.status(400).json("Invalid input");
+     
+    const validate = validator.validate(email); 
+    if(!validate)
+    return res.status(400).json("Invalid input");
 
     try{
         const user = new User();
