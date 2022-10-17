@@ -17,3 +17,7 @@ code {
 .column {
   flex-direction: column;
 }
+
+.display {
+  display: none !important;
+}
