@@ -307,6 +307,18 @@ const viewCompanyJobs = async(req, res) => {
     })
 }
 
+const checkEmail = async(req, res) => {
+    const {email} = req.params;
+    User.find({
+        email: email
+   }, async (err, user) => {
+    if(err)
+    res.status(404).json("user not found");
+    if(user.length>0)
+    res.status(200).json("user found");
+    else res.status(404).json("user not found");
+})}
+
 
 
 module.exports = {
@@ -328,7 +340,8 @@ module.exports = {
     viewJob,
     viewNotifications,
     viewJobs,
-    viewCompanyJobs
+    viewCompanyJobs, 
+    checkEmail
 }
 
 

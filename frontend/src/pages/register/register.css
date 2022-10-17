@@ -1,0 +1,77 @@
+.person-register-page {
+    background-color: #f3f2ef;
+    height: 100vh;
+}
+
+.register-title {
+    width: 100%;
+    justify-content: center;
+}
+
+.register-title h1 {
+    font-weight: 400;
+}
+
+.person-form-container {
+    width: 100%;
+    justify-content: center;
+    
+}
+
+
+.register-input {
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgb(70, 70, 70);
+    font-size: 14px;
+    outline: none;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+.register-submit {
+    background-color: #2977C9;
+    color: white;
+    font-size: 22px !important;
+    border-radius: 100px !important;
+    font-weight: 400 !important;
+}
+
+.register-form {
+    width: 350px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+    gap: 15px;
+}
+
+.label {
+    margin: 4px;
+    color: rgb(110, 110, 110);
+}
+
+.register-submit {
+    font-size: 18px !important;
+    background-color: #0A66C2;
+}
+
+.register-submit:hover {
+    background-color: #004182;
+}
+
+.register-agreement {
+    font-size: 12px !important;
+    color: black !important;
+    margin: 0;
+    text-align: center;
+    color: rgb(110, 110, 110);
+}
+
+.email-input {
+    margin-bottom: 20px;
+}
+
+.help {
+    text-align: center;
+}
