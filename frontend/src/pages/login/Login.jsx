@@ -6,9 +6,11 @@ import banner from '../../images/banner.png';
 import { useState, useEffect } from 'react';
 import axios from '../../api/axios';
 import jwt_decode from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({onLogin}) => {
 
+  const navigate = useNavigate();
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
@@ -32,6 +34,8 @@ const Login = () => {
             }
           });
           storeData(user.data);
+          onLogin(localStorage.getItem('type'));
+          navigate('/');
         } catch (error) {
           console.log(error);
         }}
@@ -43,6 +47,8 @@ const Login = () => {
               }
             });
             storeCompanyData(user.data);
+            onLogin(localStorage.getItem('type'));
+            navigate('/');
           } catch (error) {
             console.log(error);
         }}
