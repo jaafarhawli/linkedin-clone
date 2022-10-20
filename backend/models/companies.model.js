@@ -32,6 +32,9 @@ const companySchema = new mongoose.Schema({
     overview: {
         type: String,
     },
+    location: {
+        type: String,
+    },
     posts: [{
         content: {
             type:String,
