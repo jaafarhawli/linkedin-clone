@@ -13,7 +13,30 @@ const CompanyIndustry = () => {
     const [tagline, setTagline] = useState();
     const [size, setSize] = useState();
 
-    
+    const handleSubmit = async() => {
+        localStorage.setItem('industry', industry);
+        localStorage.setItem('tagline', tagline);
+        localStorage.setItem('size', size);
+        const form = {
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password'),
+            name: localStorage.getItem('name'),
+            website: localStorage.getItem('website'),
+            location: localStorage.getItem('location'),
+            industry: localStorage.getItem('industry'),
+            tagline: localStorage.getItem('tagline'),
+            size: localStorage.getItem('size')
+        };
+        try {
+            const user = await axios.post('auth/signup/company', form);
+            localStorage.setItem('id', user.data.user._id);
+            localStorage.setItem('token', user.data.token);
+            localStorage.setItem('type', user.data.user.type);
+            navigate('/company');
+          } catch (error) {
+            console.log(error);
+          }    
+    }
 
   return (
     <div>
