@@ -11,7 +11,7 @@ const CompanyName = () => {
     const [website, setWebsite] = useState();
 
     const handleSubmit = async() => {
-        localStorage.setItem('firstname', name);
+        localStorage.setItem('name', name);
         localStorage.setItem('website', website);
        navigate('location');
     }

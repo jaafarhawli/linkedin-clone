@@ -11,7 +11,7 @@ const CompanyIndustry = () => {
 
     const [industry, setIndustry] = useState();
     const [tagline, setTagline] = useState();
-    const [size, setSize] = useState();
+    const [size, setSize] = useState(1);
 
     const handleSubmit = async() => {
         localStorage.setItem('industry', industry);

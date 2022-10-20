@@ -10,8 +10,8 @@ const PersonIndustry = () => {
 
     const [industry, setIndustry] = useState();
     const [education, setEducation] = useState();
-    const [startyear, setStartyear] = useState();
-    const [endyear, setEndyear] = useState();
+    const [startyear, setStartyear] = useState(2022);
+    const [endyear, setEndyear] = useState('Present');
 
     const handleSubmit = async() => {
         localStorage.setItem('industry', industry);
