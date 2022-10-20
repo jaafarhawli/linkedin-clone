@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/login/Login';
 import Person from './pages/register/Person';
+import Company from './pages/register/Company';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
 				<Route path='/' element={<Navigate to={path} />} />
 				<Route path='/login' element={<Login onLogin={getPath} />} />
 				<Route path='/register/person/*' element={<Person />} />
+				<Route path='/register/company/*' element={<Company />} />
 			</Routes>
     </BrowserRouter>
   );

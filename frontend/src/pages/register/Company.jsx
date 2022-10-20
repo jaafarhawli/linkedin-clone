@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../../components/logo/Logo';
 import './register.css';
 import { Route, Routes } from 'react-router-dom';
+import CompanyEmail from './CompanyEmail';
 
 
 const Company = () => {
@@ -16,6 +17,9 @@ const Company = () => {
           </div>
           <Routes>
                 <Route path='/' element={<CompanyEmail />} />
+                {/* <Route path='/name' element={<PersonName />} />
+                <Route path='/name/location' element={<PersonLocation />} />
+                <Route path='/name/location/industry' element={<PersonIndustry />} /> */}
           </Routes>
         </div>
     );

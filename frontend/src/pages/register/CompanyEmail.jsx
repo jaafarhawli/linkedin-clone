@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from '../../api/axios';
 import { useNavigate } from 'react-router-dom';
 
-const PersonEmail = () => {
+const CompanyEmail = () => {
 
     const navigate = useNavigate();
 
@@ -41,11 +41,10 @@ const PersonEmail = () => {
             console.log(error);
           }
     }
-    
 
-    return (
-        <div>
-          <div className='person-form-container flex'>
+  return (
+    <div>
+      <div className='person-form-container flex'>
             <form className='register-form flex column'>
                 <label className='email-input'>
                   <p className='label'>Email</p>
@@ -61,8 +60,8 @@ const PersonEmail = () => {
             </form>
           </div>
             <p className='help'>Looking to create a page for a business? <a href="https://www.linkedin.com/help/linkedin/answer/a543852?trk=registration-frontend_join-form-page-help-link">Get Help</a></p>
-        </div>
-    );
+    </div>
+  );
 }
 
-export default PersonEmail;
+export default CompanyEmail;
