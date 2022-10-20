@@ -52,24 +52,16 @@ const editProfile = async(req, res) => {
     changes.name = data.name;
     else
     changes.name = company.name;
-
-    if(data.url) {
-        const companies = await Company.find();
-        let total_urls = [];
-        companies.forEach(company => {
-        total_urls = total_urls.concat(company.url);        
-        });
-        if (total_urls.includes(url)) 
-        res.status(400).json("url already exists");
-        changes.url = data.url;
-    }
-    else
-    changes.url = company.url;
     
     if(data.website)
     changes.website = data.website;
     else
     changes.website = company.website;
+    
+    if(data.location)
+    changes.location = data.location;
+    else
+    changes.location = company.location;
     
     if(data.industry)
     changes.industry = data.industry;
@@ -93,7 +85,6 @@ const editProfile = async(req, res) => {
     
     Company.findByIdAndUpdate(id,{
         name: changes.name,
-        url: changes.url,
         website: changes.website,
         industry: changes.industry, 
         size: changes.size,

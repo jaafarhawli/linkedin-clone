@@ -72,7 +72,7 @@ const personSignup = async (req, res)=>{
 }
 
 const companySignup = async (req, res)=>{
-    const {email, password,name, url, website, location, industry, size, tagline} = req.body;
+    const {email, password,name, website, location, industry, size, tagline} = req.body;
     const companies = await Company.find();
     let total_urls = [];
     companies.forEach(company => {
@@ -100,7 +100,6 @@ const companySignup = async (req, res)=>{
         const company = new Company();
         company._id = user._id;
         company.name = name;
-        company.url = url;
         company.location = location;
         if(website) 
         company.website = website;

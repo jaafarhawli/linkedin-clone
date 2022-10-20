@@ -6,12 +6,6 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: 'first name is required'
     },   
-    url: {
-        type: String,
-        required: 'url is required',
-        unique: true,
-        trim: true
-    },
     website: {
         type: String,
     },
