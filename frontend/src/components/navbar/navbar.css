@@ -54,3 +54,7 @@
     border-radius: 50%;
     background-color: #808080;
 }
+
+.nav-link {
+    color: #808080 !important;
+}

@@ -5,6 +5,7 @@ import {BiSearchAlt2} from 'react-icons/bi';
 import {AiFillHome} from 'react-icons/ai';
 import {BsFillBriefcaseFill} from 'react-icons/bs';
 import {IoMdNotifications} from 'react-icons/io';
+import {NavLink} from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -17,22 +18,30 @@ const Navbar = () => {
         </div>
       </div>
       <div className='navicons-container flex'>
-          <div className='nav-icons flex column'>
-              <AiFillHome className='nav-icon' />
-              <p className='navicon-label'>Home</p>
-          </div>
-          <div className='nav-icons flex column'>
-              <BsFillBriefcaseFill className='nav-icon' />
-              <p className='navicon-label'>Jobs</p>
-          </div>
-          <div className='nav-icons flex column'>
-              <IoMdNotifications className='nav-icon' />
-              <p className='navicon-label'>Notifications</p>
-          </div>
-          <div className='nav-icons flex column'>
-              <div className='profile-container'></div>
-              <p className='navicon-label'>Me</p>
-          </div>
+          <NavLink to='home' key={1}  className='nav-link' >
+            <div className='nav-icons flex column'>
+                <AiFillHome className='nav-icon' />
+                <p className='navicon-label'>Home</p>
+            </div>
+          </NavLink>
+          <NavLink to='jobs' key={2} className='nav-link'>
+            <div className='nav-icons flex column'>
+                <BsFillBriefcaseFill className='nav-icon' />
+                <p className='navicon-label'>Jobs</p>
+            </div>
+          </NavLink>
+          <NavLink to='notifications' key={3} className='nav-link'>
+            <div className='nav-icons flex column'>
+                <IoMdNotifications className='nav-icon' />
+                <p className='navicon-label'>Notifications</p>
+            </div>
+          </NavLink>
+          <NavLink to='profile' key={4} className='nav-link'>
+            <div className='nav-icons flex column'>
+                <div className='profile-container'></div>
+                <p className='navicon-label'>Me</p>
+            </div>
+          </NavLink>
       </div>
     </div>
   );
