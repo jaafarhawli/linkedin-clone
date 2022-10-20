@@ -19,24 +19,24 @@ const Navbar = () => {
       </div>
       <div className='navicons-container flex'>
           <NavLink to='home' key={1}  className='nav-link' >
-            <div className='nav-icons flex column'>
+            <div className='nav-icons flex column' activeclassname='active'>
                 <AiFillHome className='nav-icon' />
                 <p className='navicon-label'>Home</p>
             </div>
           </NavLink>
           <NavLink to='jobs' key={2} className='nav-link'>
-            <div className='nav-icons flex column'>
+            <div className='nav-icons flex column' activeclassname='active'>
                 <BsFillBriefcaseFill className='nav-icon' />
                 <p className='navicon-label'>Jobs</p>
             </div>
           </NavLink>
-          <NavLink to='notifications' key={3} className='nav-link'>
+          <NavLink to='notifications' key={3} className='nav-link' activeclassname='active'>
             <div className='nav-icons flex column'>
                 <IoMdNotifications className='nav-icon' />
                 <p className='navicon-label'>Notifications</p>
             </div>
           </NavLink>
-          <NavLink to='profile' key={4} className='nav-link'>
+          <NavLink to='profile' key={4} className='nav-link' activeclassname='active'>
             <div className='nav-icons flex column'>
                 <div className='profile-container'></div>
                 <p className='navicon-label'>Me</p>

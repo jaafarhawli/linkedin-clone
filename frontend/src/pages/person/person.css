@@ -1,0 +1,52 @@
+.body-container {
+    min-height: calc(100vh - 50px);
+    background-color: #f3f2ef;
+    padding: 20px 200px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+.home-banner-container {
+    width: 230px;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.home-banner {
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 80px;
+    background-color: #808080;
+}
+
+.home-profile-pic {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, 0);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #808080;
+    border: solid 2px white;
+}
+
+.home-name {
+    font-size: 20px;
+    margin-top: 60px;
+}
+
+.home-profile {
+    width: fit-content;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 30px;
+    border-radius: 5px;
+}

@@ -44,9 +44,18 @@
     color: #808080;
 }
 
+.nav-icons:hover {
+    color: black;
+}
+
+.nav-icon:hover {
+    color: black;
+}
+
 .navicon-label {
     font-size: 12px;
 }
+
 
 .profile-container {
     width: 24px;
@@ -56,5 +65,9 @@
 }
 
 .nav-link {
-    color: #808080 !important;
+    color: #808080;
+}
+
+.active{
+    color: black !important;
 }
