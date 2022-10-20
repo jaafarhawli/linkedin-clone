@@ -48,7 +48,7 @@ const CompanyIndustry = () => {
                 </label>
                 <label>
                     <p className='label'>Size</p>
-                    <select className='select' onChange={e => setSize(e.target.value)}>
+                    <select className='select size' onChange={e => setSize(e.target.value)}>
                         <option value="1">0-1 Employees</option>
                         <option value="10">2-10 Employees</option>
                         <option value="50">11-50 Employees</option>

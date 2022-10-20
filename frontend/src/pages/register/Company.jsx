@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import CompanyEmail from './CompanyEmail';
 import CompanyName from './CompanyName';
 import CompanyLocation from './CompanyLocation';
+import CompanyIndustry from './CompanyIndustry';
 
 
 const Company = () => {
@@ -21,7 +22,7 @@ const Company = () => {
                 <Route path='/' element={<CompanyEmail />} />
                 <Route path='/name' element={<CompanyName />} />
                 <Route path='/name/location' element={<CompanyLocation />} />
-                {/* <Route path='/name/location/industry' element={<PersonIndustry />} /> */}
+                <Route path='/name/location/industry' element={<CompanyIndustry />} />
           </Routes>
         </div>
     );

@@ -69,11 +69,13 @@ const PersonIndustry = () => {
                 <div className='select-container flex'>
                     <label>
                         <p className='label'>Start Year</p>
-                        <select className='select' onChange={e => setStartyear(e.target.value)}>{generateDates()}</select>
+                        <select className='select' defaultValue='' onChange={e => setStartyear(e.target.value)}>
+                          {generateDates()}
+                        </select>
                     </label>
                     <label>
                         <p className='label'>End Year</p>
-                        <select className='select' onChange={e => setEndyear(e.target.value)}>
+                        <select className='select' defaultValue='' onChange={e => setEndyear(e.target.value)}>
                             <option value="Present">Present</option>
                             {generateDates()}
                         </select>
