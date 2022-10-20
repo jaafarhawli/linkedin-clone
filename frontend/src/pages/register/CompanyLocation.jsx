@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import countryList from 'react-select-country-list'
 
-
-
-const PersonLocation = () => {
+const CompanyLocation = () => {
 
     const navigate = useNavigate();
 
@@ -23,11 +21,10 @@ const PersonLocation = () => {
         localStorage.setItem('location', location.label);
         navigate('industry');
     }
-    
 
-    return (
-        <div>
-          <div className='person-form-container flex'>
+  return (
+    <div>
+      <div className='person-form-container flex'>
             <form className='register-form flex column'>
                 <label className='email-input'>
                   <p className='label'>Location</p>
@@ -36,8 +33,8 @@ const PersonLocation = () => {
                 <button type="button" className='button register-submit' onClick={handleSubmit}>Continue</button>
             </form>
           </div>
-        </div>
-    );
+    </div>
+  );
 }
 
-export default PersonLocation;
+export default CompanyLocation;
