@@ -6,6 +6,7 @@
 .register-title {
     width: 100%;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 .register-title h1 {
@@ -44,6 +45,7 @@
     background-color: white;
     border-radius: 8px;
     gap: 15px;
+    margin-bottom: 15px;
 }
 
 .label {

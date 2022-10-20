@@ -3,7 +3,7 @@ import './login.css';
 import Logo from '../../components/logo/Logo';
 import Button from '../../components/button/Button';
 import banner from '../../images/banner.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from '../../api/axios';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
@@ -80,14 +80,23 @@ const Login = ({onLogin}) => {
     localStorage.setItem("url", data.url);
     localStorage.setItem("website", data.website);
   }
+  
+  const signupPerson = async() => {
+    console.log('hi');
+   navigate('/register/person');
+  }
+
+  const signupCompany = async() => {
+    navigate('/register/company');
+  }
 
   return (
     <div>
       <div className='navigation flex'>
         <Logo />
         <div className='nav-buttons flex'>
-          <Button buttonText={"Join now"} classname={"join-btn"} />
-          <Button buttonText={"Sign in"} classname={"signin-btn"} />
+          <button className='button join-btn'  onClick={signupPerson} >Join now</button>
+          <button className='button signin-btn'  onClick={signupCompany} >Create Company</button>
         </div>
       </div>
       <div className='login-body flex'>

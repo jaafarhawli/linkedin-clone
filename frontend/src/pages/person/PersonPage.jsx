@@ -10,7 +10,7 @@ const PersonPage = () => {
       <Navbar />
       <div className='body-container'>
         <Routes>
-            <Route path='/home/' element={<PersonHome />} />
+            <Route path='/' element={<PersonHome />} />
         </Routes>
       </div>
     </div>

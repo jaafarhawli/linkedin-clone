@@ -18,7 +18,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='navicons-container flex'>
-          <NavLink to='home' key={1}  className='nav-link' >
+          <NavLink to='/person' key={1}  className='nav-link' >
             <div className='nav-icons flex column' activeclassname='active'>
                 <AiFillHome className='nav-icon' />
                 <p className='navicon-label'>Home</p>
