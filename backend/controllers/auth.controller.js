@@ -74,13 +74,6 @@ const personSignup = async (req, res)=>{
 const companySignup = async (req, res)=>{
     const {email, password,name, website, location, industry, size, tagline} = req.body;
     const companies = await Company.find();
-    let total_urls = [];
-    companies.forEach(company => {
-        total_urls = total_urls.concat(company.url);        
-    });
-    if (total_urls.includes(url)) 
-    res.status(400).json("url already exists");
-    res.status(400).json("companies");
 
     if(password.length < 8)
     return res.status(400).json("Invalid input");
@@ -107,8 +100,7 @@ const companySignup = async (req, res)=>{
 
         company.industry = industry;
         company.size = size;
-        if(logo) 
-        company.logo_url = '';
+        logo_url = '';
 
         if(tagline) 
         company.tagline = tagline;
