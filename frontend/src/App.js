@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from './pages/login/Login';
 import Person from './pages/register/Person';
 import Company from './pages/register/Company';
+import PersonPage from './pages/person/PersonPage';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
 				<Route path='/login' element={<Login onLogin={getPath} />} />
 				<Route path='/register/person/*' element={<Person />} />
 				<Route path='/register/company/*' element={<Company />} />
+				<Route path='/person/*' element={<PersonPage />} />
 			</Routes>
     </BrowserRouter>
   );

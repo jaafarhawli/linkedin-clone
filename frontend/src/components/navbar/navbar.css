@@ -1,0 +1,56 @@
+.navbar {
+    width: 100%;
+    justify-content: space-between;
+    height: 50px;
+    padding: 5px 200px;
+}
+
+.search-flex {
+    align-items: center;
+    gap: 5px;
+}
+
+.search-container {
+    position: relative;
+} 
+
+.search-icon {
+    position: absolute;
+    left: 5px;
+    top: 8px;
+}
+
+.search-bar {
+    height: 35px;
+    width: 300px;
+    outline: none;
+    padding: 2px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #EEF3F8;
+    font-size: 14px;
+}
+
+
+
+
+.nav-icons {
+    align-items: center;
+    width: 80px;
+}
+
+.nav-icon {
+    font-size: 24px;
+    color: #808080;
+}
+
+.navicon-label {
+    font-size: 12px;
+}
+
+.profile-container {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #808080;
+}
