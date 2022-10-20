@@ -3,6 +3,7 @@ import './person.css';
 import {Route, Routes} from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import PersonHome from './PersonHome';
+import PersonJobs from './PersonJobs';
 
 const PersonPage = () => {
   return (
@@ -11,6 +12,7 @@ const PersonPage = () => {
       <div className='body-container'>
         <Routes>
             <Route path='/' element={<PersonHome />} />
+            <Route path='/jobs' element={<PersonJobs />} />
         </Routes>
       </div>
     </div>

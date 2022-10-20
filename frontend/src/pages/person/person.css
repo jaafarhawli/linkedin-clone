@@ -79,3 +79,14 @@
 .post-content {
     padding-top: 20px;
 }
+
+.job-title {
+    font-weight: bold;
+    color: #156DC4;
+    font-size: 15px;
+}
+
+.job-location {
+    color: #808080;
+}
+
