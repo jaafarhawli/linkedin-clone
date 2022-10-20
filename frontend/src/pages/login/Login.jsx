@@ -1,9 +1,9 @@
 import React from 'react';
 import './login.css';
+import '../../components/button/button.css';
 import Logo from '../../components/logo/Logo';
-import Button from '../../components/button/Button';
 import banner from '../../images/banner.png';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from '../../api/axios';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';

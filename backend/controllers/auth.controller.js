@@ -17,7 +17,7 @@ const login = async (req, res)=>{
     if(!isMatch) return res.status(404).json({message: "Invalid Credentials"});
 
     const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
-        expiresIn: '1h'
+        expiresIn: '1y'
     });
     res.status(200).json(token)
 }
@@ -59,7 +59,7 @@ const personSignup = async (req, res)=>{
         await person.save();
 
         const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
-            expiresIn: '1h'
+            expiresIn: '1y'
         });
 
         res.status(200).json({user, person, token});
@@ -109,7 +109,7 @@ const companySignup = async (req, res)=>{
         await company.save();
 
         const token = jwt.sign({email: user.email, userType: user.type}, process.env.JWT_SECRET_KEY, {
-            expiresIn: '1h'
+            expiresIn: '1y'
         });
 
         res.status(200).json({user, company,token});

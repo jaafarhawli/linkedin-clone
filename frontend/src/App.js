@@ -5,8 +5,10 @@ import Login from './pages/login/Login';
 import Person from './pages/register/Person';
 import Company from './pages/register/Company';
 import PersonPage from './pages/person/PersonPage';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 
 function App() {
+	const client = new QueryClient();
 
   const [path, setPath] = useState('/login');
 
@@ -26,15 +28,17 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-			<Routes>
-				<Route path='/' element={<Navigate to={path} />} />
-				<Route path='/login' element={<Login onLogin={getPath} />} />
-				<Route path='/register/person/*' element={<Person />} />
-				<Route path='/register/company/*' element={<Company />} />
-				<Route path='/person/*' element={<PersonPage />} />
-			</Routes>
-    </BrowserRouter>
+	<QueryClientProvider client={client}>
+    	<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Navigate to={path} />} />
+					<Route path='/login' element={<Login onLogin={getPath} />} />
+					<Route path='/register/person/*' element={<Person />} />
+					<Route path='/register/company/*' element={<Company />} />
+					<Route path='/person/*' element={<PersonPage />} />
+				</Routes>
+    	</BrowserRouter>
+	</QueryClientProvider>
   );
 }
 

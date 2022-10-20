@@ -256,10 +256,12 @@ const followCompany = async(req, res) => {
 const viewPosts = async(req, res) => {
     const {id} = req.params;
     const companies = await Person.findById(id).select("-_id following");
-    const posts = await Company.find().where('_id').in(companies.following).select("-_id posts");
+    const posts = await Company.find().where('_id').in(companies.following).select("-_id logo_url name posts");
     let total_posts = [];
+    let post_content = {};
     posts.forEach(post => {
-        total_posts = total_posts.concat(post.posts);        
+        post_content = {logo: post.logo_url, name: post.name, posts:post.posts}
+        total_posts.push(post_content);        
     });
     res.status(200).json(total_posts);
 }
