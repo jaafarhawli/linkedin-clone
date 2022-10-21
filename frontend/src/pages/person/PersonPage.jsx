@@ -6,6 +6,7 @@ import PersonHome from './PersonHome';
 import PersonJobs from './PersonJobs';
 import PersonJob from './PersonJob';
 import PersonNotifications from './PersonNotifications';
+import PersonSearch from './PersonSearch';
 
 const PersonPage = () => {
   return (
@@ -17,6 +18,7 @@ const PersonPage = () => {
             <Route path='/jobs' element={<PersonJobs />} />
             <Route path='/jobs/job' element={<PersonJob />} />
             <Route path='/notifications' element={<PersonNotifications />} />
+            <Route path='/search' element={<PersonSearch />} />
         </Routes>
       </div>
     </div>

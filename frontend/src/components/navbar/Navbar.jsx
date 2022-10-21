@@ -6,14 +6,27 @@ import {AiFillHome} from 'react-icons/ai';
 import {BsFillBriefcaseFill} from 'react-icons/bs';
 import {IoMdNotifications} from 'react-icons/io';
 import {NavLink} from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const [value, setValue] = useState();
+  const searchCompany = (e) => {
+    if(e.key === 'Enter') {
+      navigate('/person/search', {state:{input: value}})
+    }
+  }
+  
+
   return (
     <div className='navbar flex'>
       <div className='search-flex flex' >
         <BsLinkedin className='nav-logo' />
         <div className='search-container' >
-            <input type="text" placeholder='Search' className='search-bar' />
+            <input type="text" placeholder='Search' className='search-bar' onKeyDown={(e) => searchCompany(e)} onChange={e => setValue(e.target.value)} />
             <BiSearchAlt2 className='search-icon' />
         </div>
       </div>
@@ -46,5 +59,7 @@ const Navbar = () => {
     </div>
   );
 }
+
+
 
 export default Navbar;
