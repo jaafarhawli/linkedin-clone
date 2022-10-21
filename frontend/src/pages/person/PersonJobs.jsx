@@ -18,7 +18,7 @@ const PersonJobs = () => {
 
     const viewPost = (job_id) => {
         console.log(job_id)
-        navigate('job', {id: job_id});
+        navigate('job', {state:{id: job_id}});
     }
 
     console.log(data);
