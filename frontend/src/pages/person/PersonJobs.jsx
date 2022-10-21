@@ -17,17 +17,16 @@ const PersonJobs = () => {
     })
 
     const viewPost = (job_id) => {
-        console.log(job_id)
         navigate('job', {state:{id: job_id}});
     }
 
-    console.log(data);
+
 
     if(data?.length === 0) {
         return (
             <div className='home-grid'>
                 <div>
-                      <p>No Posts Currently</p>
+                      <p>No Jobs Currently</p>
                 </div>
             </div>
         )

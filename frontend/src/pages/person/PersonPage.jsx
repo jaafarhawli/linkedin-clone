@@ -5,6 +5,7 @@ import Navbar from '../../components/navbar/Navbar';
 import PersonHome from './PersonHome';
 import PersonJobs from './PersonJobs';
 import PersonJob from './PersonJob';
+import PersonNotifications from './PersonNotifications';
 
 const PersonPage = () => {
   return (
@@ -15,6 +16,7 @@ const PersonPage = () => {
             <Route path='/' element={<PersonHome />} />
             <Route path='/jobs' element={<PersonJobs />} />
             <Route path='/jobs/job' element={<PersonJob />} />
+            <Route path='/notifications' element={<PersonNotifications />} />
         </Routes>
       </div>
     </div>

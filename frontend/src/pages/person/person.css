@@ -90,3 +90,17 @@
     color: #808080;
 }
 
+.apply-button {
+    background-color: #156DC4;
+    border-radius: 100px;
+    padding: 10px;
+    color: white;
+    font-size: 17px;
+    border: none;
+    margin-top: 20px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
